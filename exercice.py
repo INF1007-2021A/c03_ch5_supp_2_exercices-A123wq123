@@ -4,10 +4,43 @@
 import math
 
 def get_num_letters(text):
-	return 0
+	number = 0
+	for character in text:
+		if character.isalnum():
+			number += 1
+		else:
+			continue
+	print(number)
+	return (number)
+
+get_num_letters("nommbre de charactère alpha numérique")
 
 def get_word_length_histogram(text):
-	return [0]
+	length = 0
+	histo=[0]
+
+	for character in text:
+
+		if character.isalnum():
+			length += 1
+
+		elif character == " ":
+
+			try:
+				histo[length]+=1
+
+			except:
+				for i in range(length - histo.index(histo[-1])):
+					histo.append(0)
+				histo[length]+=1
+
+			length = 0
+
+		else:
+
+			continue
+
+	return histo
 
 def format_histogram(histogram):
 	ROW_CHAR = "*"
